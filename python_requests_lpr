@@ -1,0 +1,158 @@
+
+#----------------------------------------------------------------------------------------------------------------------#
+#--------------------------------------------------Code to get LPR Detection data--------------------------------------#
+#----------------------------------------------------------------------------------------------------------------------#
+
+
+#Importing libraries
+import requests
+from xml.dom import minidom
+from pytz import timezone 
+from datetime import datetime, date
+import datetime
+import pymysql as MySQLdb
+import time
+import json
+from pprint import pprint
+import csv
+
+import DBconnection
+from PushNotification import PushNotify
+
+def convertdatetime(captureTime):
+    date = captureTime.split("T")[0]
+    timee = captureTime.split("T")[1].split("-")[0]
+    year =date[0:4]
+    day = date[4:6]
+    mm = date[6:8]
+    return year+"-"+mm+"-"+day + " "+ timee
+
+
+florida = timezone('US/Eastern')
+#florida = timezone('Asia/Dhaka')
+florida_time = datetime.now(florida)
+print(florida_time)
+
+
+data = "2019-04-12 09:19:19.838092-04:00"
+year = data.split("-")[0]
+month= data.split("-")[1]
+day = data.split("-")[2].split(" ")[0]
+
+hm = data.split(" ")[1].split(":")[0]
+mins = data.split(" ")[1].split(":")[1]
+ss = data.split(" ")[1].split(":")[1]
+msec = data.split(".")[1].split("-")[0]
+print(hm)
+print(mins)
+print(ss)
+print(msec)
+datetimee = year+month+day
+print(datetimee)
+
+xmldata = year+month+day+hm+mins+ss+msec
+print(xmldata)
+
+#201904120601000000
+
+print(year)
+print(month)
+print(day)
+
+
+#------------------------Calling the LPR Camera WebAPi for getting vehicle detection data------------------------#
+xml = """<?xml version="1.0" encoding="UTF-8"?>
+<AfterTime> <picTime> """ + xmldata+ """</picTime></AfterTime> """
+headers = {'Content-Type': 'text/xml'} # set what your server accepts
+
+res_lpr = requests.post('http://ipaddress:port/ISAPI/Traffic/channels/1/vehicleDetect/plates', auth=('', ''), data= xml)
+print(res_lpr.text)
+print(type(res_lpr.text))
+print(type(res_lpr.json))
+
+
+import xmltodict, json
+
+parsed = xmltodict.parse(res_lpr.text)
+response_json = json.dumps(parsed)
+print(type(response_json))
+
+
+Plates = json.loads(response_json)["Plates"]["Plate"]
+
+print(len(Plates))
+
+for plate in Plates:
+
+    captureTime = plate['captureTime']
+
+    captureTime = convertdatetime(captureTime)
+    #date = captureTime.split("T")[0]
+    #timee = captureTime.split("T")[1].split("-")[0]
+    plateNumber = plate['plateNumber']
+    picName = plate['picName']
+    country = plate['country']
+    laneNo = plate['laneNo']
+    direction = plate['direction']
+    matchingResult = plate['matchingResult']
+
+
+    print("Capture Date: " + str(captureTime))
+    print("plateNumber: " + str(plateNumber))
+    print("picName: " + str(picName))
+    #print("country: " + str(country))
+    #print("laneNo: " + str(laneNo))
+    print("direction: " + str(direction))
+    print("matchingResult: " + str(matchingResult))
+
+
+
+
+
+    
+    
+#--------------------------------------------------------------------
+
+with open('test.json','w') as file:
+    file.write(response_json)
+
+##with open('test.xml','r') as file2:
+##    file2.read
+    
+    
+#print(json.dumps(parsed, indent=4, sort_keys=True))
+
+
+##for plate in response_json['Plates']['Plate']:
+##    print(plate)
+#print(json.dumps(o)) # '{"e": {"a": ["text", "text"]}}'
+#print(res_lpr.text['Plates'][0]['Plate']['plateNumber'])
+#File.WriteAllText("foo.xml", res_lpr);
+
+##Test_file = open('python_requests_lpr.xml','r')
+##xmldoc = minidom.parse(Test_file)
+##
+##Test_file.close()
+
+##for i in xmldoc:
+##     print('test')
+#print(res_lpr.json())
+##r = requests.post('http://scthik.dvrlists.com:70/ISAPI/Traffic/channels/1/vehicleDetect/plates', auth=('admin', '$ct12345'), data=payload)
+##
+##print(r.text)
+##print(r.json())
+##r_json = r.json()
+##print(type(r_json))
+##
+##description = r_json['description']
+##error = r_json['error']
+##fcm_token = r_json['fcm_token']
+##
+##print(description)
+##
+##print(error)
+##print(r_json['fcm_token'])
+###print(len(r_json['fcm_token']))
+###print(len(r_json['fcm_token'][0]))
+##print(fcm_token[0])
+
