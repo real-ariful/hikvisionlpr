@@ -1,0 +1,54 @@
+{"vehicle_rec":
+ [
+				{"number":"1",
+				"vehicle_plate" : "BELAIRE",
+				"vehicle_model":"Chevrolet",
+				"vehicle_color":"Blue"},
+
+				{"number":"2",
+				"vehicle_plate" : "UP16TC1364",
+				"vehicle_model":"Chevrolet",
+				"vehicle_color":"Red"},
+
+				{"number":"3",
+				"vehicle_plate" : "KUI8ZRR_",
+				"vehicle_model":"Unknown",
+				"vehicle_color":"Blue"},
+
+				{"number":"4",
+				"vehicle_plate" : "MML1277H",
+				"vehicle_model":"BMW",
+				"vehicle_color":"Red"},
+
+				{"number":"5",
+				"vehicle_plate" : "TN66P9",
+				"vehicle_model":"Audi",
+				"vehicle_color":"Red"},
+
+				{"number":"6",
+				"vehicle_plate" : "SMB1551",
+				"vehicle_model":"Mercedez",
+				"vehicle_color":"Silver"},
+
+				{"number":"7",
+				"vehicle_plate" : "_PP79633",
+				"vehicle_model":"Unknown",
+				"vehicle_color":"Navy Blue"},
+
+				{"number":"8",
+				"vehicle_plate" : "BSKC041",
+				"vehicle_model":"Volvo",
+				"vehicle_color":"White"},
+
+				{"number":"9",
+				"vehicle_plate" : "M666YOB",
+				"vehicle_model":"Chrysler",
+				"vehicle_color":"Maroon"},
+
+				{"number":"10",
+				"vehicle_plate" : "LR33TEEE",
+				"vehicle_model":"Ford",
+				"vehicle_color":"Red"} 
+				]
+
+				}

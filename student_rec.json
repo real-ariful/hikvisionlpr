@@ -1,0 +1,54 @@
+{"student_rec":
+ [
+				{"number":"1",
+				"imageLoc" : "C:/student/student1.jpg",
+				"studentName":"John Snow",
+				"studentId":"1"},
+
+				{"number":"2",
+				"imageLoc" : "C:/student/student2.jpg",
+				"studentName":"Daenerys Targaryen",
+				"studentId":"2"},
+
+				{"number":"3",
+				"imageLoc" : "C:/student/student3.jpg",
+				"studentName":"Tyrion Lannister",
+				"studentId":"3"},
+
+				{"number":"4",
+				"imageLoc" : "C:/student/student4.jpg",
+				"studentName":"Khal Drogo",
+				"studentId":"4"},
+
+				{"number":"5",
+				"imageLoc" : "C:/student/student5.jpg",
+				"studentName":"Joffrey Baratheon",
+				"studentId":"5"},
+
+				{"number":"6",
+				"imageLoc" : "C:/student/student6.jpg",
+				"studentName":"Bronn",
+				"studentId":"6"},
+
+				{"number":"7",
+				"imageLoc" : "C:/student/student7.jpg",
+				"studentName":"Varys",
+				"studentId":"7"},
+
+				{"number":"8",
+				"imageLoc" : "C:/student/student8.jpg",
+				"studentName":"Robb Stark",
+				"studentId":"8"},
+
+				{"number":"9",
+				"imageLoc" : "C:/student/student9.jpg",
+				"studentName":"Ygritte",
+				"studentId":"9"},
+
+				{"number":"10",
+				"imageLoc" : "C:/student/student10.jpg",
+				"studentName":"Talisa Stark",
+				"studentId":"10"}
+				]
+
+				}
